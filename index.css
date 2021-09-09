@@ -9,16 +9,6 @@
     
 }
 
-input {
-    margin-bottom: 10px;
-    /* padding: 5px 3px; */
-}
-
-.add-btn {
-    margin-left: 5px;
-    display: inline;
-}
-
 .header {
     text-align: center;
 }
@@ -28,30 +18,51 @@ input {
     justify-content: center;
 }
 
+.todo-value {
+    padding: 5px 3px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+/* .add-btn {
+    display: inline;
+} */
+
 ul, .each-todo {
     list-style:none;
 }
 
-
-.todos-list {
+.list {
     max-width: 400px;
     margin: auto;
 }
 
+/* .todos-list {
+    max-width: 400px;
+    margin: auto;
+} */
+
 .each-todo {
     display: flex;
-    justify-content: space-between;
     margin-bottom: 10px;
-    border: solid 1px black;
-    border-radius: 10px;
-    padding: 5px;
 }
 
-.delete-btn {
-    margin-right: 5px;
+.todo-item {
+    width: 100%;
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.todo-btn {
+    margin-left: 5px;
 }
 
 .finished {
     text-decoration-line: line-through;
 }
 
+.hide {
+    display: none;
+}
