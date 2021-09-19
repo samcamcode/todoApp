@@ -1,4 +1,3 @@
-const allBtns = document.querySelectorAll('.btn');
 const addBtn = document.querySelector('.add-btn');
 const editBtn = document.querySelector('.edit-btn');
 const editTaskBtn = document.querySelector('.edit-todo');
@@ -22,6 +21,7 @@ const darkmode = (bool) => {
     document.body.style.color = bool ? '#e4e6eb' : '#121212';
     container.style.backgroundColor = bool ? '#171f24' : '#f5f5f5';
     container.style.borderColor = bool ? '#121212' : '#f5f5f5';
+    const allBtns = document.querySelectorAll('.btn');
     allBtns.forEach(btn => {
         btn.style.color = bool ? '#121212': '#f5f5f5';
     })
