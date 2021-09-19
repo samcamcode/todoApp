@@ -5,4 +5,6 @@ First commit - Initial commit, basic todo app, no real styling.
 
 Second commit - Styling changes, event listeners for persistent and dynamic elements in JS.
 
-Third commit - Styling, card like look on the container aslo on each todo item. Hiding element when not needed 
+Third commit - Styling, card like look on the container aslo on each todo item. Hiding element when not needed.
+
+Fourth commit - Fixed issues with edge cases in editing. Added a default task so the user can see how the tasks are laid out.
