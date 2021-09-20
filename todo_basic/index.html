@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Todo App</title>
+</head>
+<body>
+    <div class="container">
+        <div class="flex-container">
+            <input type="checkbox" name="switch" id="switch">
+            <label for="switch"></label>
+            <h1 class="header">Task Manager</h1>
+        </div>
+        <h3>Keep track of all your daily tasks</h3>
+        <div class="todo-input">
+            <input type="text" name="todo" class="todo-value" id="todo" placeholder="What do I need to do?">
+            <input type="button" class="btn edit-btn hide" value="Edit">
+            <input type="button" class="btn add-btn" value="Add Todo">
+        </div>
+        <div class="list">
+            <div class="list-heading">
+                <h2>Task List</h2>
+                <p>Edit, delete your tasks by clicking on the appropriate button.</p>
+                <p>Complete your tasks by clicking in the task card </p>
+            </div>
+            <div class="each-todo default">
+                <span class="todo-item">Add your own tasks!</span>
+                <input type="button" class="btn todo-btn edit-todo" value="Edit">
+                <input type="button" class="btn todo-btn delete-todo" value="Delete">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+</html>
