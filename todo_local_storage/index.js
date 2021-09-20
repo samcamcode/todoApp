@@ -8,12 +8,43 @@ const span = document.querySelector('span');
 const container = document.querySelector('.container');
 const lightSwitch = document.querySelector('#switch');
 
-const createTodo = (value) => {
+// return the tasks in LS or empty array
+const getTaskList = () => {
+    return JSON.parse(localStorage.getItem('tasks')) || [];
+}
+
+const taskList = getTaskList()
+
+// create a random num for id
+const randomId = () => {
+    const id = Math.random(10);
+    return parseInt(id.toString().split('.')[1]);
+}
+
+const createTodo = (item) => {
     return `
-    <span class="todo-item">${value}</span>
+    <span class="todo-item">${item.task}</span>
     <input type="button" class="btn todo-btn edit-todo" value="Edit">
     <input type="button" class="btn todo-btn delete-todo" value="Delete">`
 }
+
+// populate tasks to screen from local storage
+const populateTasks = (arr) => {
+    if (arr.length < 1) return
+    arr.forEach((task) => {
+        const div = document.createElement('div')
+        div.setAttribute('id', `${task.id}`)
+        div.classList.add('each-todo')
+        div.innerHTML = createTodo(task)
+        list.appendChild(div)
+    })
+}
+
+// load tasks on window load
+window.addEventListener('load', () => {
+    populateTasks(taskList)
+})
+
 
 // change elements from light to dark
 const darkmode = (bool) => {
@@ -50,10 +81,10 @@ lightSwitch.addEventListener('click', () => {
 //event listener for adding a task
 addBtn.addEventListener('click', () => {
     if (input.value === '') return
-    const div = document.createElement('div')
-    div.classList.add('each-todo')
-    div.innerHTML = createTodo(input.value)
-    list.appendChild(div)
+    const taskObj = {id: randomId(), task: input.value};
+    taskList.push(taskObj);
+    localStorage.setItem('tasks', JSON.stringify(taskList))
+    populateTasks(taskList)
     input.value = '';
 })
 
