@@ -13,7 +13,7 @@ const getTaskList = () => {
     return JSON.parse(localStorage.getItem('tasks')) || [];
 }
 
-const taskList = getTaskList()
+let taskList = getTaskList()
 
 // create a random num for id
 const randomId = () => {
@@ -84,7 +84,11 @@ addBtn.addEventListener('click', () => {
     const taskObj = {id: randomId(), task: input.value};
     taskList.push(taskObj);
     localStorage.setItem('tasks', JSON.stringify(taskList))
-    populateTasks(taskList)
+    const div = document.createElement('div')
+    div.setAttribute('id', `${taskObj.id}`)
+    div.classList.add('each-todo')
+    div.innerHTML = createTodo(taskObj)
+    list.appendChild(div)
     input.value = '';
 })
 
@@ -93,17 +97,29 @@ editBtn.addEventListener('click', () => {
     const editTodo = document.getElementsByClassName('editing')[0];
     if (input.value === '') return
     editTodo.childNodes[1].innerText = input.value;
+    taskList.forEach(item => {
+        if (item.id === parseInt(editTodo.id)) {
+            item.task = input.value
+        }
+    })
     toggleDisableClass();
     editTodo.classList.remove('editing');
     input.value = '';
     addBtn.classList.remove('hide');
     editBtn.classList.add('hide');
+    localStorage.removeItem('tasks');
+    localStorage.setItem('tasks',JSON.stringify(taskList))
 })
 
 // dynamic event listener for delete-task btn
 list.addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-todo')){
-        e.target.parentElement.remove()
+        e.target.parentElement.remove();
+        taskList = taskList.filter(task => {
+            return task.id !== parseInt(e.target.parentElement.id)
+        })
+        localStorage.removeItem('tasks');
+        localStorage.setItem('tasks',JSON.stringify(taskList))
     }
 })
 
